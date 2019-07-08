@@ -1,0 +1,7 @@
+{
+	"private": true,
+	"scripts": {
+	  "test": "apitools test",
+	  "start": "apitools start server.js"
+	}
+  }
