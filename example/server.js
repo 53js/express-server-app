@@ -11,7 +11,7 @@ const {
 
 // log.level = 40;
 
-log.info('config', config);
+log().info('config', config);
 
 const app = application().useInitialMiddlewares();
 
@@ -26,7 +26,7 @@ app.get('/bad', wa(async () => { throw Boom.badRequest(); }));
 app.get('/not', wa(async () => { throw Boom.notImplemented(); }));
 app.get(
 	'/invalid',
-	validator.validate({
+	validator().validate({
 		query: {
 			type: 'object',
 			additionalProperties: false,
