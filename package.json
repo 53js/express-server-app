@@ -8,7 +8,7 @@
     "apitools": "./bin/apitools.js"
   },
   "scripts": {
-    "test": "jest --watchAll"
+    "test": "jest --watchAll --coverage"
   },
   "author": "53js",
   "license": "MIT",
@@ -26,6 +26,7 @@
     "cross-env": "^5.2.0",
     "dotenv": "^8.0.0",
     "dotenv-expand": "^5.1.0",
+    "execa": "^2.0.3",
     "express": "^4.17.1",
     "express-json-validator-middleware": "^2.0.0",
     "express-pino-logger": "^4.0.0",
