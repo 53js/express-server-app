@@ -12,9 +12,9 @@ const exec = command => execa.commandSync(
 	{ preferLocal: LOCAL_PACKAGES, shell: true, stdio: 'inherit' },
 );
 
-const debug = () => exec(`nodemon --inspect-brk ${argsStr} | pino-pretty -c -t`);
-const dist = () => exec(`node ${argsStr}`);
-const start = () => exec(`nodemon ${argsStr} | pino-pretty -c -t`);
+const debug = () => exec(`nodemon --inspect-brk server.js ${argsStr} | pino-pretty -c -t`);
+const dist = () => exec(`node server.js ${argsStr}`);
+const start = () => exec(`nodemon server.js ${argsStr} | pino-pretty -c -t`);
 const test = () => exec(`cross-env NODE_ENV=test jest --coverage --watchAll ${argsStr}`);
 
 const commands = {

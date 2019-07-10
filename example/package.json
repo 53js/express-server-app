@@ -1,7 +1,9 @@
 {
 	"private": true,
 	"scripts": {
-	  "test": "apitools test",
-	  "start": "apitools start server.js"
+		"debug": "apitools debug",
+		"dist": "apitools dist",
+		"test": "apitools test",
+		"start": "apitools start"
 	}
-  }
+}
