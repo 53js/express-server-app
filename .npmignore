@@ -1,0 +1,9 @@
+*
+
+!bin/*
+!lib/*
+!/index.js
+!LICENSE
+
+__test__
+*.test.js
