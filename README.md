@@ -2,6 +2,12 @@
 
 A minimal opinionated set of tools to create Web and REST servers.  
 
+[![npm](http://img.shields.io/npm/v/express-server-app.svg?style=flat)](https://npmjs.org/package/express-server-app "View this project on npm") 
+[![Code Climate coverage](https://img.shields.io/codeclimate/coverage/53js/express-server-app.svg)](https://codeclimate.com/github/53js/express-server-app "CodeClimate coverage") 
+[![CircleCI](https://img.shields.io/circleci/build/github/53js/express-server-app.svg)](https://circleci.com/gh/53js/express-server-app "CircleCI") 
+[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/53js/express-server-app.svg)](https://codeclimate.com/github/53js/express-server-app "CodeClimate maintainability") 
+[![MIT](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
+
 # Philosophy
 
 It does not aim to cover every needs of a Web or REST API server. It only aims to provide a stable base of development.
