@@ -9,6 +9,14 @@
 	"scripts": {
 		"test": "jest --watchAll --coverage"
 	},
+	"jest": {
+		"coveragePathIgnorePatterns": [
+			"fixtures/"
+		],
+		"testPathIgnorePatterns": [
+			"fixtures/"
+		]
+	},
 	"author": "53JS",
 	"license": "MIT",
 	"devDependencies": {
