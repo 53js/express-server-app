@@ -1,9 +1,9 @@
 {
 	"private": true,
 	"scripts": {
-		"debug": "apitools debug",
-		"dist": "apitools dist",
-		"test": "apitools test",
-		"start": "apitools start"
+		"debug": "server-app debug",
+		"dist": "server-app dist",
+		"test": "server-app test",
+		"start": "server-app start"
 	}
 }
