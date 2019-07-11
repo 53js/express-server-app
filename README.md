@@ -1,4 +1,4 @@
-# server-app
+# express-server-app
 
 A minimal opinionated set of tools to create Web and REST servers.  
 
@@ -56,13 +56,13 @@ The following commands are available:
 **Using npm**
 
 ```sh
-npm install server-app
+npm install express-server-app
 ```
 
 **Using yarn**
 
 ```sh
-yarn add server-app
+yarn add express-server-app
 ```
 
 ## Usage
@@ -75,7 +75,7 @@ See the example in the repo.
 
 ```js
 // server.js
-const { application } = require('server-app');
+const { application } = require('express-server-app');
 
 // Initializes express application and add minimum middlewares (security, request parsing, logging)
 const app = application().useInitialMiddlewares();
@@ -90,7 +90,7 @@ app.start();
 ### Create a REST API
 
 ```js
-const { application } = require('server-app');
+const { application } = require('express-server-app');
 
 const app = application().useInitialMiddlewares();
 
@@ -105,7 +105,7 @@ app.useHealthyRoute() // Add the route /healthy for health control of the server
 
 ```js
 // Require the default logger
-const { log } = require('server-app');
+const { log } = require('express-server-app');
 
 // Log on info level (see pino api for details)
 // Note that log() is a function!
@@ -128,14 +128,14 @@ module.exports = {
 
 ```js
 // server.js
-const { application, config } = require('server-app');
+const { application, config } = require('express-server-app');
 // ...
 app.start(config.serverPort);
 ```
 
 ### Request validation
 ```js
-const { application, validator } = require('server-app');
+const { application, validator } = require('express-server-app');
 
 const app = application().useInitialMiddlewares();
 
@@ -161,7 +161,7 @@ app.useApiFinalMiddlewares()
 ### REST API errors
 
 ```js
-const { application } = require('server-app');
+const { application } = require('express-server-app');
 const Boom = require('@hapi/boom'); // Require Boom ! 
 
 const app = application().useInitialMiddlewares();
@@ -178,7 +178,7 @@ app.useApiFinalMiddlewares()
 ### Express async handlers
 
 ```js
-const { application, asyncWrapper } = require('server-app');
+const { application, asyncWrapper } = require('express-server-app');
 
 const Person = require('./models/Person');
 
@@ -197,17 +197,17 @@ app.useApiFinalMiddlewares()
 
 **In development:**  
 ```sh
-server-app start
+express-server-app start
 ```
 
 **In production:**
 ```sh
-NODE_ENV=production server-app dist
+NODE_ENV=production express-server-app dist
 ```
 
 # API
 
-## server-app
+## express-server-app
 
 An object containing the following tools:  
 
@@ -219,7 +219,7 @@ An object containing the following tools:
 	middlewares, // defaults middlewares
 	validator, // JSON Schema request validator
 	wrapAsync, // helper for request async handlers
-} = require('server-app');
+} = require('express-server-app');
 ```
 
 ## .application
@@ -235,7 +235,7 @@ It returns ApplicationInstance, an express application augmented with the follow
 
 Example:  
 ```js
-const { application } = require('server-app');
+const { application } = require('express-server-app');
 const app = application();
 ```
 
@@ -250,7 +250,7 @@ Start the server optionnaly on port passed as parameter.
 
 Example:  
 ```js
-const { application } = require('server-app');
+const { application } = require('express-server-app');
 const app = application();
 app.start(80);
 ```
@@ -265,7 +265,7 @@ Call this method just before start().
 
 Example:  
 ```js
-const { application } = require('server-app');
+const { application } = require('express-server-app');
 const app = application();
 // ... add your routes
 app.useApiFinalMiddlewares().start();
@@ -278,7 +278,7 @@ Add the route `/healthy`.
 
 Example:  
 ```js
-const { application } = require('server-app');
+const { application } = require('express-server-app');
 const app = application();
 // ... add your routes
 app.useHealthyRoute()
@@ -296,7 +296,7 @@ Call this method just after create the application.
 
 Example:  
 ```js
-const { application } = require('server-app');
+const { application } = require('express-server-app');
 const app = application()
 	.useInitialMiddlewares(); // first middlewares !
 // ... add your routes
@@ -311,7 +311,7 @@ Set a default index route `/`.
 
 Example:  
 ```js
-const { application } = require('server-app');
+const { application } = require('express-server-app');
 const app = application();
 // ... add your routes
 app.useRootRoute()
@@ -322,7 +322,7 @@ app.useRootRoute()
 
 An object containing the config object defined in file `config/config-<NODE_ENV>.js`.
 
-When you require server-app, it reads the environment variables defined in .env files using dotenv.  
+When you require express-server-app, it reads the environment variables defined in .env files using dotenv.  
 Then you can use this variables using the process.env object.
 
 The JavaScript config files directory can be changed using the environment variable `CONFIG_DIR`.
@@ -348,7 +348,7 @@ module.exports = {
 
 ```js
 // server.js
-const { config, log() } = require('server-app');
+const { config, log() } = require('express-server-app');
 log().level = process.env.LOG_LEVEL;
 tiers.setAccessKey(config.accessKey);
 ```
@@ -361,7 +361,7 @@ Returns the global logger. By default it returns a Pino instance.
 
 Example:  
 ```js
-const { log } = require('server-app');
+const { log } = require('express-server-app');
 const logger = log();
 logger.info('Hello!');
 ```
@@ -374,7 +374,7 @@ Returns the new logger.
 
 Example:  
 ```js
-const { log } = require('server-app');
+const { log } = require('express-server-app');
 const logger = log.setLogger(pino());
 ```
 
@@ -431,7 +431,7 @@ Set a middleware to false to disable it.
 
 Example:
 ```js
-const { middlewares } = require('server-app');
+const { middlewares } = require('express-server-app');
 const initialMiddlewares = getInitialMiddlewares({
 	cors: cors({ origin: 'http://example.com' }), // override cors middleware
 	helmet: false, // disable helmet
@@ -463,7 +463,7 @@ Set a middleware to false to disable it.
 
 Example:
 ```js
-const { middlewares } = require('server-app');
+const { middlewares } = require('express-server-app');
 const finalMiddlewares = getFinalMiddlewares({
 	notFound: (req, res, next) => next(Boom.notImplemented()),
 	validationErrors: false, // disable validation error middleware
@@ -482,7 +482,7 @@ Returns the global JSON Schema validator.
 
 Example:  
 ```js
-const { validator } = require('server-app');
+const { validator } = require('express-server-app');
 app.get(
 	'/valid',
 	validator().validate({
@@ -507,7 +507,7 @@ Returns the new validator.
 
 Example:  
 ```js
-const { validator } = require('server-app');
+const { validator } = require('express-server-app');
 validator.setLogger(new Validator());
 ```
 
@@ -521,7 +521,7 @@ Returns the wrapped middleware.
 
 Example:
 ```js
-const { asyncWrapper } = require('server-app');
+const { asyncWrapper } = require('express-server-app');
 // ...
 app.get(
 	'/persons',
@@ -538,7 +538,7 @@ It also pipes output to [pino-pretty](https://github.com/pinojs/pino-pretty) to 
 
 Example (using `npx`):
 ```sh
-npx server-app debug
+npx express-server-app debug
 ```
 
 You may also add scripts to your package.json :
@@ -547,10 +547,10 @@ Example:
 ```json
 ...
 "scripts": {
-	"debug": "server-app debug",
-	"dist": "server-app dist",
-	"start": "server-app start",
-	"test": "server-app test", 
+	"debug": "express-server-app debug",
+	"dist": "express-server-app dist",
+	"start": "express-server-app start",
+	"test": "express-server-app test", 
 }
 ...
 ```

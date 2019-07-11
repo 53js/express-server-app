@@ -1,9 +1,9 @@
 {
 	"private": true,
 	"scripts": {
-		"debug": "server-app debug",
-		"dist": "server-app dist",
-		"test": "server-app test",
-		"start": "server-app start"
+		"debug": "express-server-app debug",
+		"dist": "express-server-app dist",
+		"test": "express-server-app test",
+		"start": "express-server-app start"
 	}
 }
