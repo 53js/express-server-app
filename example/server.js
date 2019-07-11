@@ -25,7 +25,7 @@ app.get('/ok', (req, res) => { res.send('ok'); });
 app.get('/bad', wa(async () => { throw Boom.badRequest(); }));
 app.get('/not', wa(async () => { throw Boom.notImplemented(); }));
 app.get(
-	'/invalid',
+	'/valid',
 	validator().validate({
 		query: {
 			type: 'object',
