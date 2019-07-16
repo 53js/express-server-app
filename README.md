@@ -1,6 +1,7 @@
 # express-server-app
 
-A minimal opinionated set of tools to create Web and REST servers.  
+A minimal opinionated set of tools to create Web and REST servers.
+On top of **🚀Express**, it provides: **🛠 CLI**, **📖 logging**, **✅ JSON Schema validation**, ️**⚠️ HTTP errors management**, **🎚 project configuration**, **⛑ HTTP security** ...  
 
 [![npm](http://img.shields.io/npm/v/express-server-app.svg?style=flat)](https://npmjs.org/package/express-server-app "View this project on npm") 
 [![Code Climate coverage](https://img.shields.io/codeclimate/coverage/53js/express-server-app.svg)](https://codeclimate.com/github/53js/express-server-app "CodeClimate coverage") 
@@ -19,35 +20,36 @@ It mainly uses the following modules:
 - [pino](https://github.com/pinojs/pino)
 - [dotenv](https://github.com/motdotla/dotenv)
 - [@hapi/boom](https://github.com/hapijs/boom)
+- [helmet](https://github.com/helmetjs/helmet)
 - [express-json-validator-middleware](https://github.com/JouzaLoL/express-json-validator-middleware) (and [ajv](https://github.com/epoberezkin/ajv))
 
 # Features
 
-**Config**
+**🎚 Config**
 
 Reads server configuration from .env and config/config-<NODE_ENV>.js files.
 
-**Logging**
+**📖 Logging**
 
 Creates a default logger using pinojs and add it to express server.
 
-**Basic security**
+**⛑ Basic security**
 
 The server adds by default the cors and helmet middlewares.
 
-**JSON Schema request validation**
+**✅ JSON Schema request validation**
 
 Requests params can be validated using Ajv and JSON Schema.
 
-**Async middlewares helpers**
+**🛠 Async middlewares helpers**
 
 Allows to write middlewares using async/await and promises.
 
-**Error formatting for REST APIs**
+**⚠️ Error formatting for REST APIs**
 
 Errors are formatted using Boom and sent back as JSON with correct errors codes.
 
-**CLI tools to run and debug the app**
+**🛠 CLI tools to run and debug the app**
 
 The following commands are available:   
 - `debug`: run your server with node inspect to allow debugging
