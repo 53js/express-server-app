@@ -35,7 +35,7 @@ Creates a default logger using pinojs and add it to express server.
 
 **⛑ Basic security**
 
-The server adds by default the cors and helmet middlewares.
+The server adds by default the cors and helmet middlewares, and forces HTTPS protocol in production environment.
 
 **✅ JSON Schema request validation**
 
@@ -236,6 +236,7 @@ An object containing the following tools:
 
 It returns ApplicationInstance, an express application augmented with the following methods:
 - start
+- trustProxy
 - useApiFinalMiddlewares
 - useHealthyRoute
 - useInitialMiddlewares
@@ -250,7 +251,13 @@ const app = application();
 ### .application.start(app, [port])
 
 Start the application passed as parameter optionnaly on port \[port\].
-Default port is 3000.
+Default port is 3000
+
+### .application.trustProxy(app, [value])
+
+Call express.set('trust proxy') to allow proxy "forward" headers.  
+See [express documentation](https://expressjs.com/fr/guide/behind-proxies.html) for details.  
+Default trusted proxy ip is 127.0.0.1
 
 ### ApplicationInstance.start([port])
 
@@ -261,6 +268,17 @@ Example:
 const { application } = require('express-server-app');
 const app = application();
 app.start(80);
+```
+
+### ApplicationInstance.trustProxy(value)
+
+Trusts proxy passed as parameter. See [express documentation](https://expressjs.com/fr/guide/behind-proxies.html) for details.  
+
+Example:  
+```js
+const { application } = require('express-server-app');
+const app = application();
+app.trustProxy('loopback, 123.123.123.123');
 ```
 
 ### ApplicationInstance.useApiFinalMiddlewares([options])
@@ -388,6 +406,11 @@ const logger = log.setLogger(pino());
 
 ## .middlewares
 
+### .middlewares.forceHttps([port])
+
+A middleware to force https permanent redirection in production environment only.  
+Pass parameter port to change default 443 port for the redirection.
+
 ### .middlewares.handle404
 
 A REST middleware that throws Boom.notFound() if route is not found.
@@ -414,6 +437,7 @@ Returns an array of middlewares that should be added at the beginning of the exp
 
 Middlewares (order is important):   
 - helmet
+- forceHttps
 - cors
 - logger
 - express.json
@@ -428,10 +452,11 @@ An object containing middlewares :
 ```js
 {
 	cors, // default: cors()
-	helmet, // default: helmet(),
-	json, // default: express.json(),
-	logger, // default: pinoMiddleware({ logger: log() }),
-	urlencoded, // default: express.urlencoded({ extended: true }),
+	forceHttps, // default: .middlewares.forceHttps()
+	helmet, // default: helmet()
+	json, // default: express.json()
+	logger, // default: pinoMiddleware({ logger: log() })
+	urlencoded, // default: express.urlencoded({ extended: true })
 }
 ```
 
@@ -461,9 +486,9 @@ An object containing middlewares :
 
 ```js
 {
-	errors, // default: .middleware.handleErrors
-	notFound, // default: .middleware.handle404
-	validationErrors, // default: .middleware.handleValidationErrors
+	errors, // default: .middlewares.handleErrors
+	notFound, // default: .middlewares.handle404
+	validationErrors, // default: .middlewares.handleValidationErrors
 }
 ```
 
