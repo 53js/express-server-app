@@ -1,6 +1,6 @@
 {
 	"name": "express-server-app",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"description": "A minimal opinionated set of tools to create Web and REST servers",
 	"main": "index.js",
 	"bin": {
