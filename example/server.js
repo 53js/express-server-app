@@ -13,7 +13,9 @@ const {
 
 log().info('config', config);
 
-const app = application().useInitialMiddlewares();
+const app = application()
+	// .trustProxy()
+	.useInitialMiddlewares();
 
 app.use((req, res, next) => {
 	req.log.info('before');
