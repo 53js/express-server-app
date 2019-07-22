@@ -379,6 +379,13 @@ log().level = process.env.LOG_LEVEL;
 tiers.setAccessKey(config.accessKey);
 ```
 
+If needed you can override the .env file path using the environment variable `DOTENV_PATH`.  
+Example:  
+```sh
+DOTENV_PATH=.secondary.env npm start
+```  
+This will load the environment variables defined in the files `.secondary.env.development` and `.secondary.env.development.local`.
+
 ## .log
 
 ### .log()
