@@ -9,9 +9,8 @@ const {
 	wrapAsync: wa,
 } = require('..');
 
-// log.level = 40;
-
-log().info('config', config);
+// log().level = 40;
+log().info(config, 'config');
 
 const app = application()
 	// .trustProxy()
