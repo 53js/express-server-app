@@ -213,6 +213,58 @@ express-server-app start
 NODE_ENV=production express-server-app dist
 ```
 
+# CLI
+
+## debug
+
+Run the server using nodemon with the --inspect-brk flag to allow livereload and debuggers.
+It also pipes output to [pino-pretty](https://github.com/pinojs/pino-pretty) to render JSON logs more friendly.
+
+Example (using `npx`):
+```sh
+npx express-server-app debug
+```
+
+You may also add scripts to your package.json:  
+Example:
+```json
+...
+"scripts": {
+	"debug": "express-server-app debug",
+	"dist": "express-server-app dist",
+	"start": "express-server-app start",
+	"test": "express-server-app test", 
+}
+...
+```
+
+## dist
+
+Run the server using node only. It does **not** set the env variables NODE_ENV to production so you may have to!
+
+Example: (using package.json scripts)
+```sh
+NODE_ENV=production npm run dist
+```
+
+## start
+
+Run the server using nodemon and pino-pretty.
+
+Example: (using package.json scripts)
+```sh
+npm start
+```
+
+## test
+
+Test the server using jest.
+
+Example: (using package.json scripts)
+```sh
+npm test
+```
+
 # API
 
 ## express-server-app
@@ -567,59 +619,6 @@ app.get(
 	'/persons',
 	asyncWrapper(async (req, res, next) => { await Person.findAll(); }),
 );
-```
-
-# CLI
-
-## debug
-
-Run the server using nodemon with the --inspect-brk flag to allow livereload and debuggers.
-It also pipes output to [pino-pretty](https://github.com/pinojs/pino-pretty) to render JSON logs more friendly.
-
-Example (using `npx`):
-```sh
-npx express-server-app debug
-```
-
-You may also add scripts to your package.json :
-x
-Example:
-```json
-...
-"scripts": {
-	"debug": "express-server-app debug",
-	"dist": "express-server-app dist",
-	"start": "express-server-app start",
-	"test": "express-server-app test", 
-}
-...
-```
-
-## dist
-
-Run the server using node only. It does **not** set the env variables NODE_ENV to production so you may have to!
-
-Example: (using package.json scripts)
-```sh
-NODE_ENV=production npm run dist
-```
-
-## start
-
-Run the server using nodemon and pino-pretty.
-
-Example: (using package.json scripts)
-```sh
-npm start
-```
-
-## test
-
-Test the server using jest.
-
-Example: (using package.json scripts)
-```sh
-npm test
 ```
 
 # Maintainers
