@@ -186,7 +186,7 @@ app.useApiFinalMiddlewares()
 ### Express async handlers
 
 ```js
-const { application, asyncWrapper } = require('express-server-app');
+const { application, wrapAsync } = require('express-server-app');
 
 const Person = require('./models/Person');
 
@@ -194,7 +194,7 @@ const app = application().useInitialMiddlewares();
 
 app.get(
 	'/persons',
-	asyncWrapper(async (req, res, next) => { await Person.findAll(); }),
+	wrapAsync(async (req, res, next) => { await Person.findAll(); }),
 );
 
 app.useApiFinalMiddlewares()
@@ -561,11 +561,11 @@ Returns the wrapped middleware.
 
 Example:
 ```js
-const { asyncWrapper } = require('express-server-app');
+const { wrapAsync } = require('express-server-app');
 // ...
 app.get(
 	'/persons',
-	asyncWrapper(async (req, res, next) => { await Person.findAll(); }),
+	wrapAsync(async (req, res, next) => { await Person.findAll(); }),
 );
 ```
 
@@ -590,7 +590,7 @@ Example:
 	"debug": "express-server-app debug",
 	"dist": "express-server-app dist",
 	"start": "express-server-app start",
-	"test": "express-server-app test", 
+	"test": "express-server-app test",
 }
 ...
 ```
