@@ -1,6 +1,6 @@
 {
 	"name": "express-server-app",
-	"version": "0.3.1",
+	"version": "0.3.2",
 	"description": "A minimal opinionated set of tools to create Web and REST servers",
 	"main": "index.js",
 	"bin": {
@@ -20,27 +20,27 @@
 	"author": "53JS",
 	"license": "MIT",
 	"devDependencies": {
-		"eslint": "^6.0.1",
-		"eslint-config-53js": "^1.1.1",
-		"eslint-config-airbnb": "^17.1.1",
-		"eslint-plugin-import": "^2.18.0",
-		"eslint-plugin-jest": "^22.7.2"
+		"eslint": "^6.2.2",
+		"eslint-config-53js": "^1.1.2",
+		"eslint-config-airbnb": "^18.0.1",
+		"eslint-plugin-import": "^2.18.2",
+		"eslint-plugin-jest": "^22.15.2"
 	},
 	"dependencies": {
-		"@hapi/boom": "^7.4.2",
+		"@hapi/boom": "^7.4.3",
 		"cors": "^2.8.5",
 		"cross-env": "^5.2.0",
-		"dotenv": "^8.0.0",
+		"dotenv": "^8.1.0",
 		"dotenv-expand": "^5.1.0",
-		"execa": "^2.0.3",
+		"execa": "^2.0.4",
 		"express": "^4.17.1",
 		"express-json-validator-middleware": "^2.0.0",
 		"express-pino-logger": "^4.0.0",
-		"helmet": "^3.18.0",
-		"jest": "^24.8.0",
+		"helmet": "^3.20.0",
+		"jest": "^24.9.0",
 		"nodemon": "^1.19.1",
-		"pino": "^5.12.6",
-		"pino-pretty": "^3.2.0"
+		"pino": "^5.13.2",
+		"pino-pretty": "^3.2.1"
 	},
 	"keywords": [
 		"API",

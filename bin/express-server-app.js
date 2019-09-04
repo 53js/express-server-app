@@ -7,7 +7,7 @@ const LOCAL_PACKAGES = '..';
 const [cmd, ...args] = process.argv.slice(2);
 const argsStr = args.join(' ').trim();
 
-const exec = command => execa.commandSync(
+const exec = (command) => execa.commandSync(
 	command,
 	{ preferLocal: LOCAL_PACKAGES, shell: true, stdio: 'inherit' },
 );

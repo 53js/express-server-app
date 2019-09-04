@@ -3,10 +3,10 @@
 A minimal opinionated set of tools to create Web and REST servers.
 On top of **🚀Express**, it provides: **🛠 CLI**, **📖 logging**, **✅ JSON Schema validation**, ️**⚠️ HTTP errors management**, **🎚 project configuration**, **⛑ HTTP security** ...  
 
-[![npm](http://img.shields.io/npm/v/express-server-app.svg?style=flat)](https://npmjs.org/package/express-server-app "View this project on npm") 
-[![Code Climate coverage](https://img.shields.io/codeclimate/coverage/53js/express-server-app.svg)](https://codeclimate.com/github/53js/express-server-app "CodeClimate coverage") 
-[![CircleCI](https://img.shields.io/circleci/build/github/53js/express-server-app.svg)](https://circleci.com/gh/53js/express-server-app "CircleCI") 
-[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/53js/express-server-app.svg)](https://codeclimate.com/github/53js/express-server-app "CodeClimate maintainability") 
+[![npm](http://img.shields.io/npm/v/express-server-app.svg?style=flat)](https://npmjs.org/package/express-server-app "View this project on npm")
+[![Code Climate coverage](https://img.shields.io/codeclimate/coverage/53js/express-server-app.svg)](https://codeclimate.com/github/53js/express-server-app "CodeClimate coverage")
+[![CircleCI](https://img.shields.io/circleci/build/github/53js/express-server-app.svg)](https://circleci.com/gh/53js/express-server-app "CircleCI")
+[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/53js/express-server-app.svg)](https://codeclimate.com/github/53js/express-server-app "CodeClimate maintainability")
 [![MIT](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 # Philosophy
@@ -170,7 +170,7 @@ app.useApiFinalMiddlewares()
 
 ```js
 const { application } = require('express-server-app');
-const Boom = require('@hapi/boom'); // Require Boom ! 
+const Boom = require('@hapi/boom'); // Require Boom !
 
 const app = application().useInitialMiddlewares();
 
@@ -211,6 +211,58 @@ express-server-app start
 **In production:**
 ```sh
 NODE_ENV=production express-server-app dist
+```
+
+# CLI
+
+## debug
+
+Run the server using nodemon with the --inspect-brk flag to allow livereload and debuggers.
+It also pipes output to [pino-pretty](https://github.com/pinojs/pino-pretty) to render JSON logs more friendly.
+
+Example (using `npx`):
+```sh
+npx express-server-app debug
+```
+
+You may also add scripts to your package.json:  
+Example:
+```json
+...
+"scripts": {
+	"debug": "express-server-app debug",
+	"dist": "express-server-app dist",
+	"start": "express-server-app start",
+	"test": "express-server-app test",
+}
+...
+```
+
+## dist
+
+Run the server using node only. It does **not** set the env variables NODE_ENV to production so you may have to!
+
+Example: (using package.json scripts)
+```sh
+NODE_ENV=production npm run dist
+```
+
+## start
+
+Run the server using nodemon and pino-pretty.
+
+Example: (using package.json scripts)
+```sh
+npm start
+```
+
+## test
+
+Test the server using jest.
+
+Example: (using package.json scripts)
+```sh
+npm test
 ```
 
 # API
@@ -567,59 +619,6 @@ app.get(
 	'/persons',
 	wrapAsync(async (req, res, next) => { await Person.findAll(); }),
 );
-```
-
-# CLI
-
-## debug
-
-Run the server using nodemon with the --inspect-brk flag to allow livereload and debuggers.
-It also pipes output to [pino-pretty](https://github.com/pinojs/pino-pretty) to render JSON logs more friendly.
-
-Example (using `npx`):
-```sh
-npx express-server-app debug
-```
-
-You may also add scripts to your package.json :
-x
-Example:
-```json
-...
-"scripts": {
-	"debug": "express-server-app debug",
-	"dist": "express-server-app dist",
-	"start": "express-server-app start",
-	"test": "express-server-app test",
-}
-...
-```
-
-## dist
-
-Run the server using node only. It does **not** set the env variables NODE_ENV to production so you may have to!
-
-Example: (using package.json scripts)
-```sh
-NODE_ENV=production npm run dist
-```
-
-## start
-
-Run the server using nodemon and pino-pretty.
-
-Example: (using package.json scripts)
-```sh
-npm start
-```
-
-## test
-
-Test the server using jest.
-
-Example: (using package.json scripts)
-```sh
-npm test
 ```
 
 # Maintainers
