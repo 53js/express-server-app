@@ -86,6 +86,9 @@ See the example in the repo.
 const { application } = require('express-server-app');
 
 // Initializes express application and add minimum middlewares (security, request parsing, logging)
+// Application should be unique.
+// If you need to create sub apps or routers, use express as usual !
+// See .application() documentation in the following for an example.
 const app = application().useInitialMiddlewares();
 
 // Add your own routes using express api
@@ -298,6 +301,36 @@ Example:
 ```js
 const { application } = require('express-server-app');
 const app = application();
+```
+
+**Usage of routers**  
+ApplicationInstance should be unique.  
+If you want sub express applications or routers use express api directly
+(as you would do without express-server-app).
+
+Example:  
+```js
+// route.js
+const express = require('express');
+
+const router = express.Router(); // An express Router
+// ... add your routes using router.get() etc...
+
+module.exports = router;
+```
+
+```js
+// app.js
+const { application } = require('express-server-app');
+
+const router = require('./router');
+
+const app = application().useInitialMiddlewares();
+
+// Use your router as usual
+app.use('/route', router);
+
+app.start();
 ```
 
 ### .application.start(app, [port])
