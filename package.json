@@ -29,7 +29,7 @@
 	"dependencies": {
 		"@hapi/boom": "^7.4.3",
 		"cors": "^2.8.5",
-		"cross-env": "^5.2.0",
+		"cross-env": "^6.0.0",
 		"dotenv": "^8.1.0",
 		"dotenv-expand": "^5.1.0",
 		"execa": "^2.0.4",
