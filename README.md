@@ -484,6 +484,9 @@ const logger = log();
 logger.info('Hello!');
 ```
 
+**Logging of sensitive informations**  
+Default logger removes `Authorization` header from logs. Its value is replaced by "***"
+
 ### .log.setLogger(lg)
 
 Override the global logger with the logger passed as parameter.  
