@@ -441,7 +441,7 @@ The JavaScript config files directory can be changed using the environment varia
 *The .env config management has been copied from create-react-app. See its documentation for details.*
 
 Example:
-```.env
+```sh
 # .env
 CONFIG_DIR=conf
 LOG_LEVEL=30
@@ -501,6 +501,29 @@ const logger = log.setLogger(pino());
 
 ## .middlewares
 
+### .middlewares.enableCors()
+
+A middleware to enable the CORS.   
+By default, the environment variable CORS_ORIGIN_WHITELIST is used to set the allowed origins.   
+If CORS_ORIGIN_WHITELIST is not defined all origins are allowed.
+
+```sh
+# .env
+CORS_ORIGIN_WHITELIST='https://www.example1.com,https://www.example2.com'
+```
+
+For more options you can use directly your own cors middleware:  
+```js
+const { cors } = require('cors');
+const { middlewares } = require('express-server-app');
+const initialMiddlewares = getInitialMiddlewares({
+    cors: cors({ methods: ['POST'] }), // override default cors middleware
+});
+application()
+	.useInitialMiddlewares(initialMiddlewares)
+	//...
+```
+
 ### .middlewares.forceHttps([port])
 
 A middleware to force https permanent redirection in production environment only.  
@@ -546,7 +569,7 @@ An object containing middlewares :
 
 ```js
 {
-	cors, // default: cors()
+	cors, // default: .middlewares.enableCors()
 	forceHttps, // default: .middlewares.forceHttps()
 	helmet, // default: helmet()
 	json, // default: express.json()
@@ -563,7 +586,7 @@ const { middlewares } = require('express-server-app');
 const initialMiddlewares = getInitialMiddlewares({
 	cors: cors({ origin: 'http://example.com' }), // override cors middleware
 	helmet: false, // disable helmet
-})
+});
 ```
 
 ### .middlewares.getApiFinalMiddlewares(options)
