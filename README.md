@@ -509,7 +509,17 @@ If CORS_ORIGIN_WHITELIST is not defined all origins are allowed.
 
 ```sh
 # .env
-CORS_ORIGIN_WHITELIST='https://www.example1.com,https://www.example2.com'
+# one or multiple domains comma separated
+CORS_ORIGIN_WHITELIST=https://www.example1.com
+CORS_ORIGIN_WHITELIST=https://foo.com,https://bar.com
+CORS_ORIGIN_WHITELIST=https://www.example1.com,/\\.example2\\.com$/,https://www.53js.fr
+# RegExp : you have to double the slash (\ => \\)
+CORS_ORIGIN_WHITELIST=/localhost/
+CORS_ORIGIN_WHITELIST=/\\.example2\\.com$/
+# Boolean
+CORS_ORIGIN_WHITELIST=true
+# special values
+CORS_ORIGIN_WHITELIST=*
 ```
 
 For more options you can use directly your own cors middleware:  
