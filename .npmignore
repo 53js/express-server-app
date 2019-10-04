@@ -1,9 +1,12 @@
-*
+*.zip
+*.tgz
 
-!bin/*
-!lib/*
-!/index.js
-!LICENSE
+coverage
+*.env.*
 
-__test__
+.circleci
+.editorConfig
+.eslintrc.js
+
+__tests__
 *.test.js
