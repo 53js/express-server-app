@@ -20,27 +20,27 @@
 	"author": "53JS",
 	"license": "MIT",
 	"devDependencies": {
-		"eslint": "^6.8.0",
+		"eslint": "^7.9.0",
 		"eslint-config-53js": "^1.2.0",
-		"eslint-config-airbnb": "^18.0.1",
-		"eslint-plugin-import": "^2.20.1",
-		"eslint-plugin-jest": "^23.8.2"
+		"eslint-config-airbnb": "^18.2.0",
+		"eslint-plugin-import": "^2.22.0",
+		"eslint-plugin-jest": "^24.0.1"
 	},
 	"dependencies": {
-		"@hapi/boom": "^9.0.0",
+		"@hapi/boom": "^9.1.0",
 		"cors": "^2.8.5",
 		"cross-env": "^7.0.2",
 		"dotenv": "^8.2.0",
 		"dotenv-expand": "^5.1.0",
-		"execa": "^4.0.0",
+		"execa": "^4.0.3",
 		"express": "^4.17.1",
-		"express-json-validator-middleware": "^2.0.0",
-		"express-pino-logger": "^4.0.0",
-		"helmet": "^3.21.3",
-		"jest": "^25.1.0",
-		"nodemon": "^2.0.2",
-		"pino": "^5.17.0",
-		"pino-pretty": "^3.6.1"
+		"express-json-validator-middleware": "^2.1.1",
+		"express-pino-logger": "^5.0.0",
+		"helmet": "^4.1.1",
+		"jest": "^26.4.2",
+		"nodemon": "^2.0.4",
+		"pino": "^6.6.1",
+		"pino-pretty": "^4.2.1"
 	},
 	"keywords": [
 		"API",
