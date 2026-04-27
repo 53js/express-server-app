@@ -12,3 +12,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .vscode/settings.json
+.codex
+*.code-workspace
+.claude/settings.local.json
