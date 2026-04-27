@@ -1,0 +1,13 @@
+{
+	"private": true,
+	"scripts": {
+		"start": "express-server-app start",
+		"debug": "express-server-app debug",
+		"dist": "express-server-app dist"
+	},
+	"dependencies": {
+		"@hapi/boom": "*",
+		"express": "*",
+		"express-server-app": "*"
+	}
+}
