@@ -7,7 +7,10 @@
 		"express-server-app": "./bin/express-server-app.js"
 	},
 	"scripts": {
-		"test": "jest --watchAll --coverage"
+		"test": "jest --coverage",
+		"test:all": "jest --coverage --watchAll",
+		"demo": "cd demo && node ../bin/express-server-app.js start",
+		"demo:debug": "cd demo && node ../bin/express-server-app.js debug"
 	},
 	"jest": {
 		"coveragePathIgnorePatterns": [
@@ -20,27 +23,25 @@
 	"author": "53JS",
 	"license": "MIT",
 	"devDependencies": {
-		"eslint": "^7.11.0",
-		"eslint-config-53js": "^1.2.0",
-		"eslint-config-airbnb": "^18.2.0",
-		"eslint-plugin-import": "^2.22.1",
-		"eslint-plugin-jest": "^24.1.0"
+		"eslint": "^8.57.1",
+		"eslint-config-53js": "^2.0.0",
+		"eslint-config-airbnb": "^19.0.4",
+		"eslint-plugin-import": "^2.31.0",
+		"eslint-plugin-jest": "^29.15.2"
 	},
 	"dependencies": {
-		"@hapi/boom": "^9.1.0",
-		"cors": "^2.8.5",
-		"cross-env": "^7.0.2",
-		"dotenv": "^8.2.0",
-		"dotenv-expand": "^5.1.0",
-		"execa": "^4.0.3",
-		"express": "^4.17.1",
-		"express-json-validator-middleware": "^2.1.1",
-		"express-pino-logger": "^5.0.0",
-		"helmet": "^4.1.1",
-		"jest": "^26.5.3",
-		"nodemon": "^2.0.5",
-		"pino": "^6.7.0",
-		"pino-pretty": "^4.3.0"
+		"@hapi/boom": "^10.0.1",
+		"cors": "^2.8.6",
+		"dotenv": "^17.4.2",
+		"dotenv-expand": "^13.0.0",
+		"express": "^5.2.1",
+		"express-json-validator-middleware": "^4.0.0",
+		"helmet": "^8.0.0",
+		"jest": "^30.3.0",
+		"nodemon": "^3.1.7",
+		"pino": "^10.3.1",
+		"pino-http": "^11.0.0",
+		"pino-pretty": "^13.0.0"
 	},
 	"keywords": [
 		"API",

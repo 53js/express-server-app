@@ -1,0 +1,190 @@
+{
+	"info": {
+		"name": "express-server-app demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000"
+		}
+	],
+	"item": [
+		{
+			"name": "GET /",
+			"request": {
+				"method": "GET",
+				"url": "{{baseUrl}}/"
+			},
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status is 200', () => pm.response.to.have.status(200));"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "GET /healthy",
+			"request": {
+				"method": "GET",
+				"url": "{{baseUrl}}/healthy"
+			},
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status is 200', () => pm.response.to.have.status(200));",
+							"pm.test('body is true', () => pm.expect(pm.response.text()).to.equal('true'));"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "GET /ok",
+			"request": {
+				"method": "GET",
+				"url": "{{baseUrl}}/ok"
+			},
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status is 200', () => pm.response.to.have.status(200));",
+							"pm.test('body is ok', () => pm.expect(pm.response.text()).to.equal('ok'));"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "GET /bad — Boom 400",
+			"request": {
+				"method": "GET",
+				"url": "{{baseUrl}}/bad"
+			},
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status is 400', () => pm.response.to.have.status(400));",
+							"pm.test('statusCode field is 400', () => pm.expect(pm.response.json().statusCode).to.equal(400));",
+							"pm.test('error field present', () => pm.expect(pm.response.json().error).to.equal('Bad Request'));"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "GET /not — Boom 501",
+			"request": {
+				"method": "GET",
+				"url": "{{baseUrl}}/not"
+			},
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status is 501', () => pm.response.to.have.status(501));",
+							"pm.test('statusCode field is 501', () => pm.expect(pm.response.json().statusCode).to.equal(501));",
+							"pm.test('error field present', () => pm.expect(pm.response.json().error).to.equal('Not Implemented'));"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "GET /throw — unexpected error",
+			"request": {
+				"method": "GET",
+				"url": "{{baseUrl}}/throw"
+			},
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status is 500', () => pm.response.to.have.status(500));",
+							"pm.test('no stack trace leaked', () => pm.expect(pm.response.text()).to.not.include('Error:'));",
+							"pm.test('statusCode field is 500', () => pm.expect(pm.response.json().statusCode).to.equal(500));"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "GET /valid — missing required param",
+			"request": {
+				"method": "GET",
+				"url": "{{baseUrl}}/valid"
+			},
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status is 422', () => pm.response.to.have.status(422));",
+							"pm.test('statusCode field is 422', () => pm.expect(pm.response.json().statusCode).to.equal(422));",
+							"pm.test('message mentions Validation Error', () => pm.expect(pm.response.json().message).to.include('Validation Error'));"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "GET /valid?param=hello — valid request",
+			"request": {
+				"method": "GET",
+				"url": {
+					"raw": "{{baseUrl}}/valid?param=hello",
+					"host": ["{{baseUrl}}"],
+					"path": ["valid"],
+					"query": [{ "key": "param", "value": "hello" }]
+				}
+			},
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status is 200', () => pm.response.to.have.status(200));",
+							"pm.test('body is valid', () => pm.expect(pm.response.text()).to.equal('valid'));"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "GET /valid?unknown=x — additionalProperties rejected",
+			"request": {
+				"method": "GET",
+				"url": {
+					"raw": "{{baseUrl}}/valid?unknown=x",
+					"host": ["{{baseUrl}}"],
+					"path": ["valid"],
+					"query": [{ "key": "unknown", "value": "x" }]
+				}
+			},
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status is 422', () => pm.response.to.have.status(422));",
+							"pm.test('statusCode field is 422', () => pm.expect(pm.response.json().statusCode).to.equal(422));",
+							"pm.test('message mentions Validation Error', () => pm.expect(pm.response.json().message).to.include('Validation Error'));"
+						]
+					}
+				}
+			]
+		}
+	]
+}
