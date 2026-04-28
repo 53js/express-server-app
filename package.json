@@ -7,7 +7,8 @@
 		"express-server-app": "./bin/express-server-app.js"
 	},
 	"scripts": {
-		"test": "jest --watchAll --coverage",
+		"test": "jest --coverage",
+		"test:all": "jest --coverage --watchAll",
 		"demo": "cd demo && node ../bin/express-server-app.js start",
 		"demo:debug": "cd demo && node ../bin/express-server-app.js debug"
 	},
